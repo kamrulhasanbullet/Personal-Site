@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  /* ── Colors ── */
+  --color-bg:     #050a14;
+  --color-bg-2:   #080f1e;
+  --color-cyan:   #00e5ff;
+  --color-orange: #ff6b35;
+  --color-purple: #7c3aed;
+  --color-muted:  #6b7a99;
+
+  /* ── Fonts ── */
+  --font-syne: "Syne", sans-serif;
+  --font-dm:   "DM Sans", sans-serif;
+
+  /* ── Gradients ── */
+  --background-image-grad-1:     linear-gradient(135deg, #00e5ff, #7c3aed);
+  --background-image-grad-2:     linear-gradient(135deg, #ff6b35, #ff1f6e);
+  --background-image-grad-3:     linear-gradient(135deg, #7c3aed, #2563eb);
+  --background-image-grad-green: linear-gradient(135deg, #22c55e, #059669);
+
+  /* ── Animations ── */
+  --animate-float:   floatY 4s ease-in-out infinite;
+  --animate-glow:    glowBox 3s ease-in-out infinite;
+  --animate-pulse2:  pulseDot 2s infinite;
+  --animate-slidein: slideIn .8s ease both;
+
+  @keyframes floatY {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-12px); }
+  }
+  @keyframes glowBox {
+    0%, 100% { box-shadow: 0 0 20px rgba(0,229,255,.15); }
+    50%       { box-shadow: 0 0 45px rgba(0,229,255,.45); }
+  }
+  @keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: .4; transform: scale(1.4); }
+  }
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(28px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+/* ── Force dark background ── */
+html, body, #root {
+  background-color: #050a14;
+  color: #e8edf5;
+  min-height: 100vh;
+}
+
+/* ── Cursor ── */
+* { cursor: none !important; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #080f1e; }
+::-webkit-scrollbar-thumb { background: rgba(0,229,255,.22); border-radius: 4px; }
+
+/* ── Scroll Reveal ── */
+.reveal, .reveal-l, .reveal-r {
+  opacity: 0;
+  transition: opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1);
+}
+.reveal   { transform: translateY(28px); }
+.reveal-l { transform: translateX(-28px); }
+.reveal-r { transform: translateX(28px); }
+.reveal.visible,
+.reveal-l.visible,
+.reveal-r.visible { opacity: 1; transform: translate(0, 0); }
+
+/* ── Skill Bar ── */
+.skill-track { height: 4px; background: rgba(255,255,255,.06); border-radius: 2px; overflow: hidden; }
+.skill-fill  { height: 100%; width: 0; border-radius: 2px; transition: width 1.4s cubic-bezier(.4,0,.2,1); }
+
+/* ── Service Card top-border ── */
+.card-topbar { position: relative; overflow: hidden; }
+.card-topbar::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #00e5ff, #7c3aed);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .4s ease;
+}
+.card-topbar:hover::before { transform: scaleX(1); }
+
+/* ── Nav active underline ── */
+.nav-indicator {
+  position: absolute;
+  bottom: -5px; left: 0; right: 0;
+  height: 2px; border-radius: 1px;
+  background: linear-gradient(90deg, #00e5ff, #7c3aed);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .35s cubic-bezier(.4,0,.2,1);
+}
+.nav-active .nav-indicator { transform: scaleX(1); }
+
+/* ── Mobile nav hide ── */
+@media (max-width: 860px) {
+  .nav-desktop { display: none !important; }
+}

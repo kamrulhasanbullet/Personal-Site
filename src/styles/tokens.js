@@ -1,0 +1,16 @@
+export const T = {
+  bg:       "#050a14",
+  bg2:      "#080f1e",
+  cyan:     "#00e5ff",
+  orange:   "#ff6b35",
+  purple:   "#7c3aed",
+  muted:    "#6b7a99",
+  text:     "#e8edf5",
+  white:    "#ffffff",
+  grad1:    "linear-gradient(135deg,#00e5ff,#7c3aed)",
+  grad2:    "linear-gradient(135deg,#ff6b35,#ff1f6e)",
+  grad3:    "linear-gradient(135deg,#7c3aed,#2563eb)",
+  border:   "rgba(255,255,255,0.07)",
+  surface:  "rgba(255,255,255,0.03)",
+  surface2: "rgba(255,255,255,0.06)",
+};

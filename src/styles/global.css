@@ -52,8 +52,6 @@ html, body, #root {
   min-height: 100vh;
 }
 
-/* ── Cursor ── */
-* { cursor: none !important; }
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar       { width: 5px; }

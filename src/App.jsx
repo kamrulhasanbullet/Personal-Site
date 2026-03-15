@@ -13,14 +13,12 @@ import Experience   from "./components/sections/Experience";
 // import Testimonials from "./components/sections/Testimonials";
 import Contact      from "./components/sections/Contact";
 
-import Cursor from "./components/ui/Cursor";
 
 const App = () => {
   useReveal();
 
   return (
     <div className="font-dm bg-bg text-[#e8edf5] overflow-x-hidden">
-      <Cursor />
       <Navbar />
       <Hero />
       <About />

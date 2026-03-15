@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* Logo */}
         <button
           onClick={() => go("hero")}
-          className="font-syne text-2xl font-extrabold bg-grad-1 bg-clip-text text-transparent border-none outline-none"
+          className="font-syne text-2xl font-extrabold bg-grad-1 bg-clip-text text-transparent border-none outline-none cursor-pointer"
         >
           KIB.
         </button>
@@ -58,7 +58,7 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           <button
             onClick={() => go("contact")}
-            className="font-syne font-bold text-[.82rem] tracking-widest uppercase px-5 py-2 rounded-[3px] border border-cyan text-cyan bg-transparent transition-all duration-300 hover:bg-cyan hover:text-bg"
+            className="font-syne font-bold text-[.82rem] tracking-widest uppercase px-5 py-2 rounded-[3px] border border-cyan text-cyan bg-transparent transition-all duration-300 hover:bg-cyan hover:text-bg cursor-pointer"
           >
             Hire Me
           </button>
@@ -88,7 +88,7 @@ const Navbar = () => {
           ))}
           <button
             onClick={() => go("contact")}
-            className="font-syne font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-[3px] border border-cyan text-cyan mt-4 bg-transparent"
+            className="font-syne font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-[3px] border border-cyan text-cyan mt-4 bg-transparent cursor-pointer"
           >
             Hire Me
           </button>

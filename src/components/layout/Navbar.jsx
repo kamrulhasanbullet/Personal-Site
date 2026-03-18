@@ -2,14 +2,21 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import useActiveSection from "../../hooks/useActiveSection";
 
-const NAV_LINKS = ["about", "skills", "services", "portfolio", "experience", "contact"];
+const NAV_LINKS = [
+  "about",
+  "skills",
+  "services",
+  "portfolio",
+  "experience",
+  "contact",
+];
 
 const scrollTo = (id) => {
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 };
 
 const Navbar = () => {
-  const [scrolled,   setScrolled]  = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const active = useActiveSection();
 
@@ -19,15 +26,17 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const go = (id) => { scrollTo(id); setMobileOpen(false); };
+  const go = (id) => {
+    scrollTo(id);
+    setMobileOpen(false);
+  };
 
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-[5%] transition-all duration-300
-          ${scrolled
-            ? "py-3 bg-bg/90 backdrop-blur-xl"
-            : "py-5 bg-transparent"
+          ${
+            scrolled ? "py-3 bg-bg/90 backdrop-blur-xl" : "py-5 bg-transparent"
           }`}
       >
         {/* Logo */}
@@ -41,7 +50,10 @@ const Navbar = () => {
         {/* Desktop Links */}
         <ul className="nav-desktop flex gap-8 list-none m-0 p-0">
           {NAV_LINKS.map((link) => (
-            <li key={link} className={`relative ${active === link ? "nav-active" : ""}`}>
+            <li
+              key={link}
+              className={`relative ${active === link ? "nav-active" : ""}`}
+            >
               <button
                 onClick={() => go(link)}
                 className={`font-dm text-[.87rem] tracking-[.05em] capitalize bg-transparent border-none outline-none cursor-pointer transition-colors duration-300

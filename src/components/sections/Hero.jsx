@@ -41,7 +41,7 @@ const Hero = () => (
         <p className="text-muted font-light text-lg leading-relaxed mb-8 max-w-115">
           A{" "}
           <strong className="text-orange font-medium">Full-Stack Web Developer</strong> &amp;
-          UI/UX Enthusiast based in Dhaka, Bangladesh. I build fast, beautiful, accessible
+          UI/UX Enthusiast based in Thakurgaon, Bangladesh. I build fast, beautiful, accessible
           digital experiences.
         </p>
 

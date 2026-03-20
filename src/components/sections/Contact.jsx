@@ -8,9 +8,6 @@ import {
   Clock,
   Github,
   Linkedin,
-  Twitter,
-  Dribbble,
-  Youtube,
   Send,
 } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
@@ -23,18 +20,23 @@ const EJS_PUBLIC_KEY = "Y0qEzoeIqq_rAdVjX";
 // ─────────────────────────────────────────────────────────
 
 const CONTACT_INFO = [
-  { Icon: Mail, label: "Email", value: "kamrulislambullet@gmail.com" },
+  { Icon: Mail, label: "Email", value: "kamrulhasanbullet96@gmail.com" },
   { Icon: Phone, label: "Phone", value: "+8801774377254" },
-  { Icon: MapPin, label: "Location", value: "Dhaka, Bangladesh" },
+  { Icon: MapPin, label: "Location", value: "Thakurgaon, Bangladesh" },
   { Icon: Clock, label: "Working Hours", value: "Sun-Thu: 9AM - 8PM BST" },
 ];
 
 const SOCIALS = [
-  { Icon: Github, label: "GitHub" },
-  { Icon: Linkedin, label: "LinkedIn" },
-  { Icon: Twitter, label: "Twitter" },
-  { Icon: Dribbble, label: "Dribbble" },
-  { Icon: Youtube, label: "YouTube" },
+  {
+    Icon: Github,
+    label: "GitHub",
+    href: "https://github.com/kamrulhasanbullet",
+  },
+  {
+    Icon: Linkedin,
+    label: "LinkedIn",
+    href: "https://www.linkedin.com/in/kamrulhasanbullet",
+  },
 ];
 
 const inputCls =
@@ -145,14 +147,17 @@ const Contact = () => {
 
           {/* Social icons */}
           <div className="flex gap-2.5 mt-2">
-            {SOCIALS.map(({ Icon, label }) => (
-              <button
+            {SOCIALS.map(({ Icon, label, href }) => (
+              <a
                 key={label}
                 title={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-white/3 border border-white/[.07] rounded-md flex items-center justify-center text-muted hover:border-cyan hover:text-cyan hover:-translate-y-1 transition-all duration-300"
               >
                 <Icon size={16} />
-              </button>
+              </a>
             ))}
           </div>
 
@@ -169,7 +174,7 @@ const Contact = () => {
             <div className="text-center relative z-10">
               <MapPin size={28} className="text-cyan mx-auto mb-2" />
               <span className="text-muted text-sm font-dm">
-                Dhaka, Bangladesh
+                Thakurgaon, Bangladesh
               </span>
             </div>
           </div>

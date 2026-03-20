@@ -1,13 +1,13 @@
 import { Monitor, Download } from "lucide-react";
-import SectionHeader from "../ui/SectionHeader";
 import LineAccent from "../ui/LineAccent";
 import Tag from "../ui/Tag";
 import Btn from "../ui/Btn";
 import kamrul2 from "../../assets/kamrul-2.jpg";
+import resumePDF from "../../assets/Kamrul_Hasan_Resume.docx.pdf";
 
 const INFO_ITEMS = [
   { label: "Name", value: "Kamrul Hasan", color: null },
-  { label: "Email", value: "kamrulislambullet@gmail.com", color: null },
+  { label: "Email", value: "kamrulhasanbullet96@gmail.com", color: null },
   { label: "Location", value: "Dhaka, Bangladesh", color: null },
   {
     label: "Available",
@@ -15,6 +15,13 @@ const INFO_ITEMS = [
     color: "text-green-500",
   },
 ];
+
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = resumePDF;
+  link.download = "Kamrul-Hasan-Resume.pdf"; 
+  link.click();
+};
 
 const About = () => (
   <section id="about" className="py-28 px-[5%] bg-bg-2">
@@ -81,7 +88,7 @@ const About = () => (
                 {label}
               </div>
               <div
-                className={`text-lg font-medium font-dm ${color || "text-[#e8edf5]"}`}
+                className={`text-base font-medium font-dm ${color || "text-[#e8edf5]"}`}
               >
                 {value}
               </div>
@@ -89,7 +96,7 @@ const About = () => (
           ))}
         </div>
 
-        <Btn primary icon={Download}>
+        <Btn primary icon={Download} onClick={handleDownload} >
           Download CV
         </Btn>
       </div>

@@ -13,7 +13,7 @@ const Footer = () => (
   <footer className="bg-bg-2 border-t border-white/[.07] py-12 px-[5%] text-center">
     {/* Logo */}
     <div className="font-syne font-extrabold text-3xl bg-grad-1 bg-clip-text text-transparent inline-block mb-4">
-      KIB.
+      KHB.
     </div>
 
     {/* Links */}

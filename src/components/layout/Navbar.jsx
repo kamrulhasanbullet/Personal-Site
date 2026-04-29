@@ -44,7 +44,7 @@ const Navbar = () => {
           onClick={() => go("hero")}
           className="font-syne text-2xl font-extrabold bg-grad-1 bg-clip-text text-transparent border-none outline-none cursor-pointer"
         >
-          KIB.
+          KHB.
         </button>
 
         {/* Desktop Links */}

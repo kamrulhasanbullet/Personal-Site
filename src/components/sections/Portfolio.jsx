@@ -1,95 +1,238 @@
-import { useState } from "react";
-import { ExternalLink } from "lucide-react";
+"use client";
+
+import { useState, useEffect } from "react";
+import { ExternalLink, Github, X } from "lucide-react";
 import SectionHeader from "../ui/SectionHeader";
 import projects from "../../data/projects";
 
-const ProjectCard = ({ Icon, tag, title, desc, tech, grad, link }) => (
-  <div className="reveal group relative bg-white/2 border border-white/5 rounded-xl overflow-hidden cursor-pointer transition-all duration-500 hover:border-cyan/40 hover:bg-white/4 flex flex-col sm:flex-row h-full">
-    {/* Thumbnail Section - Left side on Desktop */}
-    <div className="relative w-full sm:w-[40%] aspect-video sm:aspect-auto min-h-50 flex items-center justify-center overflow-hidden border-b sm:border-b-0 sm:border-r border-white/5">
-      <div
-        className="absolute inset-0 opacity-[0.08] group-hover:opacity-[0.15] transition-opacity duration-700"
-        style={{ background: grad }}
-      />
+// ─── Description Modal ─────────────────────────────────────
+const DescriptionModal = ({ project, onClose }) => {
+  useEffect(() => {
+    const handleEsc = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", handleEsc);
+    return () => window.removeEventListener("keydown", handleEsc);
+  }, [onClose]);
 
-      {/* Moving Gradient Glow */}
-      <div className="absolute -inset-full bg-linear-to-tr from-transparent via-white/5 to-transparent rotate-45 -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+  if (!project) return null;
 
-      <Icon
-        size={48}
-        strokeWidth={1}
-        className="text-white/20 group-hover:text-cyan/60 group-hover:scale-110 transition-all duration-500 relative z-10"
-      />
-
-      {/* Modern Hover Overlay */}
-      <a
-        href={link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center z-20"
-      >
-        <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-          <div className="p-3 bg-white rounded-full text-black">
-            <ExternalLink size={20} />
-          </div>
-        </div>
-      </a>
-    </div>
-
-    {/* Info Section - Right side */}
-    <div className="p-6 sm:p-8 flex flex-col justify-center flex-1">
-      <div className="flex items-center gap-2 mb-3">
-        <span className="w-8 h-px bg-cyan/50"></span>
-        <span className="text-cyan text-[0.65rem] uppercase tracking-[0.2em] font-bold">
-          {tag}
-        </span>
-      </div>
-
-      <h3 className="font-syne font-bold text-white text-xl mb-3 group-hover:text-cyan transition-colors duration-300">
-        {title}
-      </h3>
-
-      <p className="text-muted text-sm leading-relaxed mb-6 line-clamp-2">
-        {desc}
-      </p>
-
-      <div className="flex gap-2 flex-wrap mt-auto">
-        {tech.map((t) => (
-          <span
-            key={t}
-            className="text-[0.6rem] px-3 py-1 bg-white/3 border border-white/8 rounded-full text-muted/80 uppercase tracking-wider group-hover:border-cyan/20 transition-colors"
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  </div>
-);
-
-const Portfolio = () => {
-  const [active, setActive] = useState("All");
-  const visible =
-    active === "All" ? projects : projects.filter((p) => p.cat === active);
+  const {
+    title,
+    desc,
+    tag,
+    tech,
+    link,
+    frontendGithub,
+    backendGithub,
+    codeGithub,
+  } = project;
 
   return (
-    <section id="portfolio" className="py-28 px-[5%] bg-bg overflow-hidden">
-      <div className="max-w-350 mx-auto">
-        <SectionHeader
-          tag="Selected Works"
-          title="Featured Projects"
-          desc="Blending aesthetic design with high-performance engineering."
-          center
-        />
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative bg-[#0e0e14] border border-white/10 rounded-2xl p-8 max-w-lg w-full shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Close */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 p-1.5 rounded-full text-white/30 hover:text-white hover:bg-white/10"
+        >
+          <X size={18} />
+        </button>
 
-        {/* Project Grid - 2 Columns on Medium+ screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16 w-full">
-          {visible.map((project, i) => (
-            <ProjectCard key={i} {...project} />
+        {/* Tag */}
+        <p className="text-cyan text-xs uppercase mb-2">{tag}</p>
+
+        {/* Title */}
+        <h3 className="text-white text-xl font-bold mb-4">{title}</h3>
+
+        {/* Desc */}
+        <p className="text-gray-400 text-sm mb-6">{desc}</p>
+
+        {/* Tech */}
+        <div className="flex flex-wrap gap-2 mb-6">
+          {tech.map((t) => (
+            <span
+              key={t}
+              className="text-xs px-3 py-1 bg-white/10 rounded-full"
+            >
+              {t}
+            </span>
           ))}
         </div>
+
+        {/* Links */}
+        <div className="flex flex-wrap gap-2">
+          {link && (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 px-3 py-2 text-xs bg-cyan-500/20 text-cyan-400 rounded"
+            >
+              <ExternalLink size={14} /> Live
+            </a>
+          )}
+
+          {codeGithub && (
+            <a
+              href={codeGithub}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 px-3 py-2 text-xs bg-white/10 rounded"
+            >
+              <Github size={14} /> Code
+            </a>
+          )}
+
+          {frontendGithub && (
+            <a
+              href={frontendGithub}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 px-3 py-2 text-xs bg-white/10 rounded"
+            >
+              <Github size={14} /> Frontend
+            </a>
+          )}
+
+          {backendGithub && (
+            <a
+              href={backendGithub}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 px-3 py-2 text-xs bg-white/10 rounded"
+            >
+              <Github size={14} /> Backend
+            </a>
+          )}
+        </div>
       </div>
-    </section>
+    </div>
+  );
+};
+
+// ─── Card ─────────────────────────────────────
+const ProjectCard = ({ project, onReadMore }) => {
+  const {
+    Icon,
+    tag,
+    title,
+    desc,
+    tech,
+    grad,
+    link,
+    frontendGithub,
+    backendGithub,
+    codeGithub,
+  } = project;
+
+  return (
+    <div className="group border border-white/10 rounded-xl overflow-hidden flex flex-col md:flex-row hover:border-cyan-400 transition">
+      {/* Left */}
+      <div className="relative md:w-1/3 flex items-center justify-center min-h-37.5">
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{ background: grad }}
+        />
+        <Icon className="text-white/30 group-hover:text-cyan-400" size={40} />
+      </div>
+
+      {/* Right */}
+      <div className="p-6 flex-1">
+        <p className="text-xs text-cyan-400 mb-2">{tag}</p>
+
+        <h3 className="text-white text-lg font-semibold mb-2">{title}</h3>
+
+        <p className="text-gray-400 text-sm line-clamp-2 mb-2">{desc}</p>
+
+        <button
+          onClick={() => onReadMore(project)}
+          className="text-xs text-cyan-400 underline mb-3 cursor-pointer"
+        >
+          See more →
+        </button>
+
+        {/* Tech */}
+        <div className="flex flex-wrap gap-2 mb-3">
+          {tech.map((t) => (
+            <span key={t} className="text-xs bg-white/10 px-2 py-1 rounded">
+              {t}
+            </span>
+          ))}
+        </div>
+
+        {/* Links */}
+        <div className="flex gap-2 flex-wrap">
+          {link && (
+            <a href={link} target="_blank" className="text-xs flex gap-1">
+              <ExternalLink size={12} /> Live
+            </a>
+          )}
+          {codeGithub && (
+            <a href={codeGithub} target="_blank" className="text-xs flex gap-1">
+              <Github size={12} /> Code
+            </a>
+          )}
+          {frontendGithub && (
+            <a
+              href={frontendGithub}
+              target="_blank"
+              className="text-xs flex gap-1"
+            >
+              <Github size={12} /> Frontend
+            </a>
+          )}
+          {backendGithub && (
+            <a
+              href={backendGithub}
+              target="_blank"
+              className="text-xs flex gap-1"
+            >
+              <Github size={12} /> Backend
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+// ─── Main ─────────────────────────────────────
+const Portfolio = () => {
+  const [modalProject, setModalProject] = useState(null);
+
+  return (
+    <>
+      <section id="portfolio" className="py-20 px-5">
+        <div className="max-w-6xl mx-auto">
+          <SectionHeader
+            tag="Projects"
+            title="My Work"
+            desc="Real-world full-stack projects"
+            center
+          />
+
+          <div className="grid md:grid-cols-2 gap-6 mt-10">
+            {projects.map((p) => (
+              <ProjectCard
+                key={p.title}
+                project={p}
+                onReadMore={setModalProject}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <DescriptionModal
+        project={modalProject}
+        onClose={() => setModalProject(null)}
+      />
+    </>
   );
 };
 

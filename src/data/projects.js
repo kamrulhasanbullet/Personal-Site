@@ -1,4 +1,4 @@
-import { Globe, Award } from "lucide-react";
+import { Globe, Award, Camera } from "lucide-react";
 
 const projects = [
   {
@@ -30,6 +30,25 @@ const projects = [
     grad: "linear-gradient(135deg,#f59e0b,#ef4444)",
     link: "https://career-pilot-nu.vercel.app/",
     codeGithub: "https://github.com/kamrulhasanbullet/Career-Pilot",
+  },
+  {
+    Icon: Camera,
+    tag: "Full-Stack",
+    title: "Instagram Clone",
+    desc: "A production-ready Instagram-like social media platform where users can create posts, like, comment, follow others, share stories, and receive real-time notifications. Includes authentication, private profiles, explore feed, and activity tracking.",
+    tech: [
+      "Next.js 15",
+      "TypeScript",
+      "MongoDB",
+      "Mongoose",
+      "NextAuth",
+      "Cloudinary",
+      "Tailwind CSS",
+      "Zod",
+    ],
+    grad: "linear-gradient(135deg,#6366f1,#ec4899)",
+    link: "https://instagram-clone-dusky-eight.vercel.app/",
+    codeGithub: "https://github.com/kamrulhasanbullet/insta-clone",
   },
 ];
 

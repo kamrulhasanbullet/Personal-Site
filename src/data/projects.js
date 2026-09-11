@@ -1,4 +1,4 @@
-import { Globe, Award, Camera, BarChart3 } from "lucide-react";
+import { Globe, Award, Camera, BarChart3, ShoppingBag } from "lucide-react";
 
 const projects = [
   {
@@ -67,8 +67,46 @@ const projects = [
       "Claude AI",
     ],
     grad: "linear-gradient(135deg,#22c55e,#3b82f6)",
-    link: "https://assignment-tracker-zeta.vercel.app/", 
-    codeGithub: "https://github.com/kamrulhasanbullet/assignment-tracker", 
+    link: "https://assignment-tracker-zeta.vercel.app/",
+    codeGithub: "https://github.com/kamrulhasanbullet/assignment-tracker",
+  },
+  {
+    Icon: BarChart3,
+    tag: "Full-Stack",
+    title: "Assignment & Learning Analytics Platform",
+    desc: "A full-stack platform connecting instructors and students where assignments can be created, submitted, reviewed with AI-assisted feedback, and analyzed through interactive performance dashboards.",
+    tech: [
+      "Next.js 15",
+      "TypeScript",
+      "MongoDB",
+      "Mongoose",
+      "NextAuth",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Recharts",
+      "Claude AI",
+    ],
+    grad: "linear-gradient(135deg,#22c55e,#3b82f6)",
+    link: "https://assignment-tracker-zeta.vercel.app/",
+    codeGithub: "https://github.com/kamrulhasanbullet/assignment-tracker",
+  },
+  {
+    Icon: ShoppingBag,
+    tag: "Full-Stack",
+    title: "ARISTO — Men's Fashion E-Commerce Platform",
+    desc: "A full-featured e-commerce platform for the Bangladeshi men's fashion market, with product catalog, cart, time-aware flash sales, coupons, wishlist, reviews, and a complete admin dashboard for orders, customers, and analytics.",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Supabase",
+      "Tailwind CSS",
+      "Recharts",
+      "Cloudinary",
+      "Resend",
+    ],
+    grad: "linear-gradient(135deg,#f97316,#ec4899)",
+    link: "https://cloth-store-orpin.vercel.app/",
+    codeGithub: "https://github.com/kamrulhasanbullet/Personal-Site",
   },
 ];
 
